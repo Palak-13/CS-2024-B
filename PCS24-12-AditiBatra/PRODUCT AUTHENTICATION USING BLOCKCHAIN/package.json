@@ -1,0 +1,15 @@
+{
+  "name": "fake-product-identification",
+  "version": "1.0.0",
+  "description": "project on blockchain",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "html5-qrcode": "^2.2.0",
+    "qrcode":"1.5.1"
+  }
+}

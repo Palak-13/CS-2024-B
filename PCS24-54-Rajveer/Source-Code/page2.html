@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display XML Data in a Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            margin-top:200px;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body  style="background-color:lightsalmon"> 
+    
+    
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="dataBody"></tbody>
+    </table>
+
+    <script>
+        // Function to extract and display XML data from the URL parameter
+        function displayXMLFromURLParameter() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var xmlData = urlParams.get("xmlData");
+
+            if (xmlData) {
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(decodeURIComponent(xmlData), "text/xml");
+                var dataBody = document.getElementById("dataBody");
+
+                // Iterate through all elements and display them in a table
+                var elements = xmlDoc.documentElement.getElementsByTagName('*');
+                for (var i = 0; i < elements.length; i++) {
+                    var elementName = elements[i].tagName;
+                    var elementValue = elements[i].textContent;
+
+                    var row = document.createElement("tr");
+                    var nameCell = document.createElement("td");
+                    nameCell.textContent = elementName;
+                    var valueCell = document.createElement("td");
+                    valueCell.textContent = elementValue;
+
+                    row.appendChild(nameCell);
+                    row.appendChild(valueCell);
+
+                    dataBody.appendChild(row);
+                }
+            }
+        }
+
+        // Call the function to display XML data from the URL parameter
+        displayXMLFromURLParameter();
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+opencv-python
+flask
+pandas
+tensorflow
+matplotlib
+segmentation_models
+
+
+two dataset...from azad sir...
+cell ke cycle ke 3-4 data dalo then lifecycle prediction dalneka...
